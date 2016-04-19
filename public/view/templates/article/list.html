@@ -1,0 +1,12 @@
+﻿<div class="row">
+    <div class="columns small-10 small-offset-1 off-set-top-1">
+        <div class="article-list" ng-repeat="content in article.contents">
+            <div>
+                <h4><a  ui-sref="master.article.detail({pageType: '{{article.url}}', pageName: '{{content.url}}'})">{{content.title}}</a></h4>
+                <p ng-bind-html="content.description"></p>
+                <!--{{(content.description.length > 100) ? content.description.substring(0,100) + ' ...' : content.description}}-->
+            </div>
+            <hr>
+        </div>
+    </div>
+</div>

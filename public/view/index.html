@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Code | Article</title>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="../src/css/vendor/foundation.min.css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="../src/css/main.css" media="screen" charset="utf-8" />
+    <link rel="stylesheet" href="../src/css/ovveride-foundation.css" charset="utf-8" />
+    <script type="text/javascript" src="../src/js/vendor/angular.min.js"></script>
+    <!--<script type="text/javascript" src="../src/js/vendor/jquery.min.js"></script>
+    <script type="text/javascript" src="../src/js/vendor/foundation.min.js"></script>-->
+    <script type="text/javascript" src="../src/js/vendor/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="../src/js/vendor/angular-sanitize.min.js"></script>
+    <script src="../src/js/vendor/underscore-min.js"></script>
+
+  </head>
+  <body ng-app="ngMain">
+      <div class="wrapper-container" ui-view ng-controller="MainController"></div>
+  </body>
+
+  <script type="text/javascript" src="../src/js/Infrastructure/app.js" defer></script>
+  <script type="text/javascript" src="../src/js/Infrastructure/dom.js" defer></script>
+  <script type="text/javascript" src="../src/js/Infrastructure/shared/state.js" defer></script>
+  <script type="text/javascript" src="../src/js/Infrastructure/services/storage.js" defer></script>
+  <script type="text/javascript" src="../src/js/Infrastructure/controllers/controller.js" defer></script>
+  <script type="text/javascript" src="../src/js/Infrastructure/directives/directives.js" defer></script>
+</html>

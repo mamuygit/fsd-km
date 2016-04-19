@@ -1,0 +1,13 @@
+﻿<div class="row">
+    <div class="columns small-3">
+        <ul class="article-menu-list">
+            <li ng-repeat="menu in article.contents">
+                <a href="" ui-sref="master.article.detail({pageType: '{{articleCurrent.pageType}}', pageName: '{{menu.url}}'})" ui-sref-opts="{reload: true}" onclick="window.scrollTo(0,0)">{{menu.title}}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="columns small-9">
+        <!--<div><h4>{{articleCurrent.pageName.toUpperCase()}}</h4></div>-->
+        <div ui-view="content"></div>
+    </div>
+</div>

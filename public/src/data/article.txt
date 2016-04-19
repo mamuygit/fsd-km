@@ -1,0 +1,65 @@
+﻿{
+   "js": 
+		  {
+			"name": "Javascript",
+			"url": "js",
+			"img" : "js-icon.png",
+			"contents": [
+			  {
+				 "title":"Begin Javascript",
+				 "description":"How to create object annd variables?</br>How to implement with Encapsulation?",
+				 "url":"begin"
+			  },
+			  {
+				 "title":"Good Javascript",
+				 "description":"How to a mostly reasonable approach to JavaScript?",
+				 "url":"good-way"
+			  }]
+		  }
+   ,
+   "angular":
+		  {
+			"name": "Angular JS",
+			"url": "angular",
+			"img" : "ang-icon.jpg",
+			"contents": [
+			  {
+				 "title":"Begin Angular JS",
+				 "description":"What mean directive in Angular JS?",
+				 "url":"begin"
+			  },
+			  {
+				 "title":"Template",
+				 "description":"Template in Angular JS?",
+				 "url":"template"
+			  },
+			  {
+				 "title":"Controller",
+				 "description":"What mean of Controller in Angular JS?",
+				 "url":"controller"
+			  },
+			  {
+				 "title":"Scope",
+				 "description":"What mean of Scope in Angular JS?",
+				 "url":"scope"
+			  },
+			  {
+				 "title":"Example directive",
+				 "description":"What mean directive in Angular JS?",
+				 "url":"directive"
+			  },
+			  {
+				 "title":"State",
+				 "description":"",
+				 "url":"state"
+			  },
+			  {
+				 "title":"Condition when binding with ng-*",
+				 "description":"",
+				 "url":"ngAngular"
+			  }]
+		   }
+}
+
+
+

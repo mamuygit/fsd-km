@@ -1,0 +1,66 @@
+﻿<h4>Dierective </h4>
+Credit : <a href="https://docs.angularjs.org" target="_blank">angular org</a><br /><br />
+
+การทำ Directives คือการทำ dynamic template binding คือการการวางโครงสร้างของ view โดยสามารถเปลี่ยนแปลงตาม content ในแต่ละส่วนของเว็บที่มีการเกิดการเปลี่ยนแปลงได้อีกนัยนึงคือการทำ global tempalte เพื่อให้สามารถได้ใช้ได้หลายๆ ส่วนใน website
+การทำ Directive มีสองแบบ
+<br/>
+1. Static html Directives<br/><br/>
+
+
+
+
+<div class="tab-contaniner" ng-controller="TabController">
+    <ul class="tabs" data-tab id="example-tabs">
+        <li class="tab-title"><a ng-click="tabIndex=1">Script.js</a></li>
+        <li class="tab-title"><a ng-click="tabIndex=2">HTML</a></li>
+    </ul>
+    <div class="tabs-content">
+        <div class="content code" ng-show="tabIndex==1">
+            <!--<p>angular.controller(<span class="red-text">'TestController'</span>, function ($scope) {</p>
+            <div class="tab-left">
+                <p>$scope.data = { };</p>
+                <p>$scope.data.content = <span class="red-text">' World !!!'</span></p>
+            </div>
+            <p>}]);</p>-->
+            <p>angular.directive(<span class="red-text">"myDirective"</span>, function () {</p>
+                <div class="tab-left">
+                    <p>return {</p>
+                        <div class="tab-left">
+                            <p>controller: function ($scope) {</p>
+                                <div class="tab-left">
+                                    <p>$scope.name = <span class="red-text">'MyName'</span>,</p>
+                                    <p>$scope.address = <span class="red-text">'My Address'</span></p>
+                                </div>
+                            <p>},</p>
+                            <p>template: <span class="red-text">'Name: {<span>{name}</span>} | Address: {<span>{address}</span>}'<span></p>
+                        </div>
+                    <p>};</p>
+                </div>
+             });
+        </div>
+        <div class="content code" ng-show="tabIndex==2">
+
+            <p><<span>div</span>></p>
+            <div class="tab-left">
+                <p><<span>p</span>>Hello Below My Directive<<span>/p</span>></p>
+                <<span>hr</span>>
+                <p><<span>p</span>><<span>my-directive</span>><<span>/my-directive</span>><<span>/p</span>></p>
+                <p><<span>p</span>><<span>span my-directive="exp"</span>><<span>/span</span>><<span>/p</span>></p>
+            </div>
+            <p><<span>/div</span>></p>
+        </div>
+    </div>
+    <div class="result">
+        <div class="code">
+            <div>
+                Hello Below My Directive
+                <hr>
+                <my-directive></my-directive><br/>
+                <span my-directive="exp"></span><br/>
+            </div>
+        </div>
+    </div>
+</div>
+&emsp;จากตัวอย่างข้างต้นจะเป็นการทำงานของ Directive ในรูปแบบของ static html ซึ่งการ Matching ระหว่าง Directive กับ View นั้นจะมีการระบุผ่าน ชื่อของ Directive นั้นๆกับ tag html ใน View
+จากตัวอย่างได้มีการสร้าง Directive myDirective ในฝั่งของ Code Javascript ซึ่งการตั้งชื่อจะมีการใช้รูปแบบของ caramel คือ word หน้านั้นจะใข้ตัวสะกดตัวเล็กและ word ที่ตามมาจะมี ตัวแรกเป็นตัวใหญ่จะ match กับ html tag ฝั่ง view
+ใน tag my-Directive

@@ -1,0 +1,135 @@
+﻿<h4>The Javascript Guide to Objects, Functions and Scope?</h4>
+Credit : <a class="link-ref" target="_blank" href="http://hangar.runway7.net/javascript/guide">http://hangar.runway7.net/javascript/guide</a>
+<br />
+<br />
+Javascript หรือ js นั้นก็มีรูปแบบของ oop เพื่อใช้ในการพัฒนาเว็บไซต์เช่นดียวกับภาษาอื่นๆ prototype จะมีรูปแบบ ในรูปของ json objects โดยมี type เป็น json
+<br />
+<br />
+<h5>Objects and Variables</h5>
+โดยรูปแบบของ ตัวแปร หรือค่า variables ใน javascript นั้นจะมี type อยู่ไม่มากนักในกรณีนี้จะยกตัวอย่างของ type var
+
+<div class="code">
+    <p>var name = <span class="red-text">'yourname'</span>;</p>
+    <p>var age = 1;</p>
+</div>
+
+จากตัวอย่างข้างต้นจะเห็นว่าเราได้ ตัวแปร type var สองตัวแปรคือ [name และ age] type var ไม่ใข่ strong type[strong type คือ type ที่ ระบุ type ตายตัวไม่สามารถรับ value อื่นได้นอกจาก type ที่เราได้ประกาศไว้เช่น int, string เป็นต้น] 
+ดังนั้น var เราสามารถ set value อะไรก็ได้ เข้าไปในตัวแปรซึ่งในที่นี้ name จะมีtype เป็น string และ age มี type เป็น int ดังนั้น เราจะสามารถเปลี่ยนแปลงค่า variable เป็น value อะไรก็ได้เมื่อไหร่ก็ได้
+
+<div class="code">
+    <p>var a = <span class="red-text">'a'</span>;</p>
+    <p>console.log(a);</p>
+    <p>a = 1;</p>
+    <p>console.log(a);</p>
+</div>
+
+จากตัวอย่างข้างต้นจะเห็นว่าเราจะได้ผลลัพธ์ log บรรทัดเเรกเป็น 'a' และบรรทัดที่สองจะได้เป็น 1 ซึ่งนี้คือการประกาศค่า variables ใน javascript 
+
+<div class="code">
+    <p>var obj = {name: <span class="red-text">'yourname'</span>, age: 1};</p>
+</div>
+จากตัวอย่างข้างต้นได้มีการ ประกาศตัวแปรที่มีชื่อว่า obj โดยภายในตัวแปรนั้นประกอบไปด้วย key name, age [เป็นในรูปแบบของ json value] ซึ่งนี่เป็นรุปแบบ objects แบบหนึ่งใน javascript
+โดย obj จะมีคุณสมบัติหลังจากการ set ค่าตัวแปรแล้วโดยมี property เป็น name และ age
+การเรียกใช้งานค่า key property ภายในตัวแปร obj
+<div class="code">
+    <p>console.log(obj.name);</p>
+    <p>console.log(obj.age);</p>
+</div>
+จากตัวอย่างข้างต้นจะเห็นว่าเราจะได้ผลลัพธ์ log บรรทัดเเรกเป็น 'yourname' และบรรทัดที่สองจะได้เป็น 1 และเราสามารถ เข้าถึง property โดยเขียนในรูปแบบ get ค่าแบบ array ได้เช่นกัน
+<div class="code">
+    <p>console.log(obj[<span class="red-text">"name"</span>]);</p>
+    <p>console.log(obj[<span class="red-text">"age"</span>]);</p>
+</div>
+
+
+<h5>Functions</h5>
+
+<div class="code">
+    <p>function doSomethings() {</p>
+    <div class="tab-left text">... do somethings</div>
+    <p>}</p>
+    <p class="text">โดยสามารถเรียกใช้งาน functions ได้โดยการ</p>
+    <p>doSomethings();</p>
+</div>
+Functions เป็นหนึ่งในส่วนประกอบหลักของ Javascript หนึ่งฟังก์ชันคือหนึ่งกระบวนการของ Javascript ซึ่งก็คือชุดคำสั่งที่ทำงานหรือคำนวณค่า โดยคุณต้องประกาศใช้ Functions ที่ใดก็ได้ภายในขอบเขตที่คุณเรียกใช้
+โดยประกอบไปด้วย function ชือ่คำสั่ง ตามด้วย ชื่อของ functions ในที่นี้ก็คือ "dosomethings" และภายใน { } คือกระบวนการขั้นตอนการทำานของ functions
+วิธีการสร้าง functions มี สองแบบ 1 การสร้าง functions ให้ทำงานภายในขอบเขตนั้นๆ เช่นดั่งตัวอย่าง code ที่อยู่ในระดับ หรือ layer เดียวกัน จะสามารถ เรียกใช้ งานฟังก์ชั่นนี้ได้ ซึ่งขอบเขตในที่นี้เรียกว่า Scope ซึ่งจะพูดใน หัวข้อต่อไป
+อีกวิธีการสร้าง functions คือการ สร้าง functions ภายใน objects หรือ สร้างเป็น variables
+
+<div class="code">
+    <p>var doSomethings = function() {</p>
+    <div class="tab-left text">... do somethings</div>
+    <p>}</p>
+    <p class="text">จาก fucntions นี้ เราจะได้ variables doSomethings ที่เป็น ประเภท functions โดยสามารถเรียกใช้งาน functions ได้โดยการ</p>
+    <p>doSomethings();</p>
+</div>
+<div class="code">
+    <p>var obj = {name: <span class="red-text">'yourname'</span>, age: 1};</p>
+    <p>obj.doSomethings = function() {</p>
+    <div class="tab-left text">... do somethings</div>
+    <p>}</p>
+    <p class="text">เราจะได้ fucntions doSomethings ที่เป็น ประเภท functions ใน objects obj โดยสามารถเรียกใช้งาน functions ได้โดยการ</p>
+    <p>obj.doSomethings();</p>
+</div>
+<div class="code">
+    <p>var obj = {name: <span class="red-text">'yourname'</span>, age: 1};</p>
+    <p>obj.doSomethings = function() {</p>
+    <div class="tab-left text">... do somethings</div>
+    <p>}</p>
+    <p class="text">เราจะได้ fucntions doSomethings ที่เป็น ประเภท functions ใน objects obj โดยสามารถเรียกใช้งาน functions ได้โดยการ</p>
+    <p>obj.doSomethings();</p>
+</div>
+
+
+<h5>Scope</h5>
+<div class="code">
+    <p>var me = {name: <span class="red-text">'myname'</span>};</p>
+    <p>var you = {name: <span class="red-text">'yourname'</span>};</p>
+    <p>me.whatName = function() {</p>
+    <p class="tab-left">return <span class="red-text">"Hi, I'm "</span> + this.name;</p>
+    <p>}</p>
+    <p>you.whatName = me.whatName;</p>
+</div>
+การเขียน Scope จะเจอบ่อยๆในการเขียน Javascript. Scope เป็นการ จำกัดขอบเขตของการเรียกใช้งาน variable functions หรือ objects เพื่อให้เกิดการทำงานที่มีประสิทธิภาพในกระบวนการทำงานของ Program 
+จากตัวอย่างข้างต้น จะเห็นว่าเรามี objects 2 ตัว คือ me และ you ซึ่งในแต่ละ objects ประกอบด้วย property คือ name และ ได้มีการสร้าง functions ให้กับ objects me คือ whatName โดยการทำงานภายใน Functions นั้น คือการ ส่งค่าออกจาก Functions เป็นค่า string  "Hi, I'm " + this.name;
+และได้มีการสร้างโยน ค่าจาก objects me โดยโยนค่า functions whatName ให้กับ objects you เป็นเหมือนการ clone function ให้กันจุดสำคัญของ โปรแกรมชุดนี้คือ  <span class="text-second">return "Hi, I'm " + this.name;</span>
+this ในที่นี้หมายถึง ตัวของ objects ใน function นั้นๆ ก็คือ function ของ me ก็จะได้ objects เป็น me ซึ่งมีการเเรียก property name ดังนั้น ค่าที่จะได้จากการเรียก fucntions whatName ของ objects me ก็คือ <span class="red-text">'myname'</span>
+
+<div class="code">
+    <p>console.log(me.whatName()); <span class="text">// result : 'mename'</span></p>
+    <p>console.log(you.whatName()); <span class="text">// result : 'yourname'</span></p>
+</div>
+นอกจากนี้เรายังสามารถใช้หลักการการทำ scope เพื่อใช้ในการป้องกันหรือทำ encapsulation ให้กับโปรแกรมของเราได้โดยทุกอย่างที่อยู่ภายใน scope จะไม่สามารถ access จาก ข้างนอกได้ 
+เพื่อป้องกันไม่ให้เกิดความเสียหายกับ value ที่จะใช้ในการะบวนการทำงานภายใน scope นั้นๆ
+
+<div class="code">
+    <p>(function funcC() {</p>
+    <div class="tab-left">
+        <p>var a = 1;</p>
+        <p>console.log(a);</p>
+    </div>
+    <div class="row">
+        <div class="columns small-2">
+            <p>})();</p>
+        </div>
+        <div class="columns small-9">
+            <span class="text">// result: 1  [immediately-invoked function expression (IIFE)]</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="columns small-2">
+            <p>funcC();</p>
+        </div>
+        <div class="columns small-9">
+            <span class="text">// Uncaught ReferenceError: funcC is not defined</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="columns small-2">
+            <p>console.log(a);</p>
+        </div>
+        <div class="columns small-9">
+            <span class="text">// Uncaught ReferenceError: a is not defined</span>
+        </div>
+    </div>
+</div>

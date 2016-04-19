@@ -1,0 +1,72 @@
+﻿<h4>Scope</h4>
+Credit : <a href="https://docs.angularjs.org" target="_blank">angular org</a><br /><br />
+ใน Angular JS เราจะมีการใช้งาน Scope ได้สองรูปแบบ<br />
+
+&emsp;1. rootscope คือ ขอบเขต ทั้งหมดที่คลุมตั้งแต่ ng-app
+<br />
+&emsp;2. scope คือ ขอบเขต ทั้งหมดที่คลุมตั้งแต่ ng-controller
+<br />
+
+โดยการแบ่งสัดส่วนของ scope จะขึ้นอยู่กับ html ที่ จะนำมาใช้คู่กับการทำ data-binding
+<br />
+<br />
+
+<div class="tab-contaniner" ng-controller="TabController">
+    <ul class="tabs" data-tab id="example-tabs">
+        <li class="tab-title"><a ng-click="tabIndex=1">Script.js</a></li>
+        <li class="tab-title"><a ng-click="tabIndex=2">HTML</a></li>
+    </ul>
+    <div class="tabs-content">
+        <div class="content code" ng-show="tabIndex==1">
+            <p>angular.module(<span class="red-text">'scopeExample'</span>, [])</p>
+            <div class="tab-left">
+                <p>.controller(<span class="red-text">'MyController'</span>, [<span class="red-text">'$scope'</span>, function($scope) {</p>
+                <p>$scope.username = <span class="red-text">'World'</span>;</p>
+                <p>$scope.sayHello = function() {</p>
+                <div class="tab-left">
+                    <p>$scope.greeting = <span class="red-text">'Hello '</span> + $scope.username + <span class="red-text">'!'</span>;</p>
+                </div>
+                <p>};</p>
+            </div>
+            <p>}]);</p>
+        </div>
+        <div class="content code" ng-show="tabIndex==2">
+            <p><<span>div <span class="red-text">ng-app="scopeExample"</span> ng-controller=<span class="red-text">"MyController"</span></span>></p>
+            <div class="tab-left">
+                <p>Your name:</p>
+                <div class="tab-left">
+                    <p><<span>input type=<span class="red-text">"text"</span> ng-model=<span class="red-text">"username"</span></span>></p>
+                    <p><<span>button ng-click=<span class="red-text">'sayHello()'</span></span>>greet<<span>/button</span>></p>
+                </div>
+                <p><<span>hr</span>></p>
+                <p>{<span>{greeting}</span>}</p>
+            </div>
+            <p><<span>/div</span>></p>
+        </div>
+    </div>
+    <div class="result">
+        <div class="code">
+
+            <div ng-init="username='World';greeting='';">
+              <div class="row">
+                  <div class="columns small-2">Your name:</div>
+                  <div class="columns small-6"><input type="text" ng-model="username"></div>
+                  <div class="columns small-3"><button class="button" ng-click="greeting='Hello '+ username + ' !'">greet</button></div>
+              </div>
+                <hr>
+              {{greeting}}
+            </div>
+        </div>
+    </div>
+</div>
+
+จากตัวอย่างข้างต้น เป็นการเขียน angular โดยมี controller เป็นตัวคุม scope data <br />
+&emsp;- Script.js<br />
+&emsp;&emsp;ได้มีการสร้าง Controller function ขึ้นมาโดยมีชื่อว่า <span class="red-text">'MyController'</span> โดยภายใน Controller นี้ประกอบไปด้วย 
+variable username มี value เป็น <span class="red-text">'World'</span> และมี function <span class="red-text">'sayHello'</span><br />
+&emsp;- html<br />
+&emsp;ภายใน บริเวณของ Controller <span class="red-text">'MyController'</span> ใน view หรือ html file เราจะสามารถเรียกใช้งาน variable function ทุกอย่างที่เรไาด้ทำการประกาศเอาไว้แล้วได้<br /><br />
+<span class="red-text">****</span> ปล. view ภายใน attribute ng-*[Whatever] เราไม่จำเป็นจะต้อง ใช้สัญลักษณ์ {<span>{...}</span>} หรือ <span class="block-color">block</span> ดังนั้นจึงใช้ 
+<span class="green-text">ng-model</span>=<span class="red-text">"username"</span> ได้
+สรุปๆง่ายๆคือ ถ้าฝั่ง view มีการจะเรียกใช้ variable หรือ fucntion ภายใน Scope ของ Controller นั้นๆ ถ้าจะใช้คู่กับ HTML tag โดยใช้ attribute ng-*[Whatever] ไม่จำเป็นต้อง ใช้ <span class="block-color">block</span> แต่ถ้าใช้ในการ binding-html จะต้องมี <span class="block-color">block</span>
+<br />

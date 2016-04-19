@@ -1,0 +1,57 @@
+﻿<h4>Begin Angular JS</h4>
+Creadit : <a href="http://blog.orbitone.com/post/Angularjs-the-Model-View-Whatever-javascript-framework1" target="_blank">orbitone</a>, <a href="https://docs.angularjs.org" target="_blank">angular org</a><br /><br />
+Angular JS คือ Javacript Framework แบบหนึ่งหมือนกับ Jquery ที่พัฒนาขึ้นมาช่วยในการพัฒนาเว็บไซต์ให้นักพัฒนาสามารถ พัฒนาเว็บไซต์ได้รวดเร็วและมีคุณภาพมากขึ้น Angular JS มีรูปแบบการทำงานเป็น MVC ในรูปแบบของ MVW  <br /><br />
+
+<h5>What is a MVW framework?</h5>
+&emsp;&emsp;MVW (Model-View-Whatever) เป็นการแบ่งการทำงานระหว่างฝั่งของ business logic หรือ model และ ฝั่ง presentation เป็น view ซึ่งเราจะออกแบบ application ของเราให้มีการทำงานในเชิง view-model ก็ได้หรือใช้งาน controller ก็ได้
+
+<div class="preload">
+    <img ng-src="../src/img/MVC.png" imageonload class="small-4 margin-center"/>
+    <p class="text-center">credit : <a href="http://www.doolwind.com/images/blog/MVC.png" target="_blank">http://www.doolwind.com/images/blog/MVC.png</a></p>
+</div>
+<br />
+
+<h5>Conceptual Overview</h5>
+&emsp;&emsp;Angular มี concept ที่หลากหลาย ใน framework ในตัวมันเองในที่นี้จะยกยกมาคร่าวๆ แต่ถ้าอยาก เรียนรู้เพิ่มเติมสามารถเข้าไปได้ที่ <a href="https://docs.angularjs.org/guide/concepts">angular.org</a>
+<div class="row table_Reuslt">
+    <div class="row">
+        <div class="columns small-4"><a ui-sref="master.article.detail({pageType: '{{articleCurrent.pageType}}', pageName: 'template'})" ui-sref-opts="{reload: true}" onclick="window.scrollTo(0,0)">Template</a></div>
+        <div class="columns small-8">HTML with additional markup</div>
+    </div>
+    <div class="row">
+        <div class="columns small-4"><a ui-sref="master.article.detail({pageType: '{{articleCurrent.pageType}}', pageName: 'controller'})" ui-sref-opts="{reload: true}" onclick="window.scrollTo(0,0)">Controller</a></div>
+        <div class="columns small-8">the business logic behind views</div>
+    </div>
+    <div class="row">
+        <div class="columns small-4"><a ui-sref="master.article.detail({pageType: '{{articleCurrent.pageType}}', pageName: 'scope'})" ui-sref-opts="{reload: true}" onclick="window.scrollTo(0,0)">Scope</a></div>
+        <div class="columns small-8">context where the model is stored so that controllers, directives and expressions can access it</div>
+    </div>
+    <div class="row">
+        <div class="columns small-4">Model</div>
+        <div class="columns small-8">the data shown to the user in the view and with which the user interacts</div>
+    </div>
+    <div class="row">
+        <div class="columns small-4">Filter</div>
+        <div class="columns small-8">formats the value of an expression for display to the user</div>
+    </div>
+    <div class="row">
+        <div class="columns small-4">View</div>
+        <div class="columns small-8">what the user sees (the DOM)</div>
+    </div>
+    <div class="row">
+        <div class="columns small-4">Data Binding</div>
+        <div class="columns small-8">sync data between the model and the view</div>
+    </div>
+    <div class="row">
+        <div class="columns small-4">Expressions</div>
+        <div class="columns small-8">access variables and functions from the scope</div>
+    </div>
+    <div class="row">
+        <div class="columns small-4">Service</div>
+        <div class="columns small-8">reusable business logic independent of views</div>
+    </div>
+    <div class="row">
+        <div class="columns small-4">Directives</div>
+        <div class="columns small-8">extend HTML with custom attributes and elements</div>
+    </div>
+</div>

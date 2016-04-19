@@ -1,0 +1,45 @@
+﻿<h4>How to use Controller</h4>
+Credit : <a href="https://docs.angularjs.org" target="_blank">angular org</a><br /><br />
+Controller ใน Angular JS เราสามารถสร้าง ให้เกิดเป็น nested controller ได้โดยมี parent และ child ได้และ controller นั้นเราจะสามารถเขียนได้สองแบบ<br />
+1. Basic Controller<br />
+&emsp;การทำงานของ controller จะมีการทำงาน ในฝั่งของ Code Javascript ซึ่งเราจะใช้ในการควบคุมขอบเขตของ scope เพื่อน เเบ่งการทำงานของ view-model หรือ binding-template ให้เป็นสัดส่วน หรือใช้งานร่วมกัน
+
+<div class="tab-contaniner" ng-controller="TabController">
+    <ul class="tabs" data-tab id="example-tabs">
+        <li class="tab-title"><a ng-click="tabIndex=1">Script.js</a></li>
+        <li class="tab-title"><a ng-click="tabIndex=2">HTML</a></li>
+    </ul>
+    <div class="tabs-content">
+        <div class="content code" ng-show="tabIndex==1">
+            <p>angular.controller(<span class="red-text">'TestController'</span>, function ($scope) {</p>
+            <div class="tab-left">
+                <p>$scope.data = { };</p>
+                <p>$scope.data.content = <span class="red-text">' World !!!'</span></p>
+            </div>
+            <p>}]);</p>
+        </div>
+        <div class="content code" ng-show="tabIndex==2">
+            <<span>div ng-controller=<span class="red-text">"TestController"</span></span>>
+                <p class="tab-left">Hello {<span>{data.content}</span>}</p>
+            <<span>/div</span>>
+        </div>
+    </div>
+    <div class="result">
+        <div class="code">
+
+            <div ng-controller="TestController">
+                <p>Hello {{data.content}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+จากตัวอย่างข้างต้นเราจะสงเกตุได้ว่า มีการประกาศ controller "TestController" ที่ฝั่ง angular.js และในฝั่งของ view นั้นมีการตั้ง attribute ให้กับ div โดย set ng-controller="TestController"
+
+
+<br /><br />
+2. Controller Custom<br />
+&emsp;การทำงาน Custom Controller จะเป้นการทำงานตาม Directives โดยเราสามารถฝัง controller เข้าไปใน Template ต่างๆได้เหมาะแก่การใช้นการทำ 
+StateView หรือ 
+<a href="" ui-sref="master.article.detail({pageType: 'angular', pageName: 'directive'})" ui-sref-opts="{reload: true}" onclick="window.scrollTo(0,0)">Directives</a>

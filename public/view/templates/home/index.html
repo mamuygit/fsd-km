@@ -1,0 +1,23 @@
+﻿<div>Welcome to Code Article A.ver</div>
+
+<div class="article-section" ng-repeat="article in articles">
+    <div class="line-header">
+        <h5 class="name"><a ui-sref="master.article.list({ pageType: '{{article.url}}'})" ui-sref-opts="{reload: true}">{{article.name}}</a></h5>
+        <hr />
+    </div>
+    <div class="row carousel carousel-collection">
+        <div class="columns small-4 item-shell" ng-repeat="content in article.contents">
+            <div class="item" ui-sref="master.article.detail({pageType: '{{article.url}}', pageName: '{{content.url}}'})" ui-sref-opts="{reload: true}">
+                <div class="article-content">
+                    <h5 class="title">{{content.title}}</h5>
+                    <p class="detail">
+                        <div ng-bind-html="content.description"></div>
+                    </p>
+                </div>
+                <div class="preload article-img">
+                    <img ng-src="../src/img/{{article.img}}" imageonload />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

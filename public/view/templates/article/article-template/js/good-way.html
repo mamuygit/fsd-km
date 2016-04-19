@@ -1,0 +1,349 @@
+﻿<h4>A mostly reasonable approach to JavaScript</h4>
+Credit : <a class="link-ref" target="_blank" href="https://github.com/airbnb/javascript">Airbnb Javascript</a><br />
+<br />
+หลักการการเขียน Javascript ที่ดี
+
+<br />
+<br />
+<h5> + Types</h5>
+Primitives Type จะเกี่ยวกับการเข้าถึงข้อมูลประเภท string, number, boolean, null, undefined<br />
+Complex Type จะเกี่ยวกับการเข้าถึงข้อมูลประเภท objects, array, functions
+Type ทั้งสองจะมีความแตกต่างกัน
+โดยที่ Primitives Type โดยจะเป็นการเข้าถึงให้แก้ไข variable นั้นๆได้ตรงๆโดยที่ไม่ effect กับ variable ที่มีการทำ reference
+
+<div class="code">
+    <p>const a = 1;</p>
+    <p>let b = a;</p>
+    <p>b = 9;</p>
+    <p>console.log(a, b); <span class="text">// => 1, 9</span></p>
+</div>
+จากตัวอย่างข้างต้นจะสังเกตุได้ว่า โปรแกรมมีการทำงานโดย reference ค่าจาก variable a ไปให้กับ variable b หลังจากนั้นได้มีการ set value ใหม่ให้กับ b เป็นค่า 9
+จะเห็นได้ว่า set value 9 นั้นมีผลกับแค่ b ไม่ได้เข้าไปแก้ไขของ a ซึ่ง ต่างจาก Complex Type
+
+<div class="code">
+    <p>const a = [1, 2];</p>
+    <p>const b = foo; <span class="text">// b = [1, 2]</span></p>
+    <p>b[0] = 9;</p>
+    <p>console.log(a[0], b[0]); <span class="text">// => 9, 9</span></p>
+</div>
+จากตัวอย่างข้างต้นจะสังเกตุได้ว่า โปรแกรมมีการทำงานโดย reference ค่าจาก variable a ที่เป็น array ไปให้กับ variable b หลังจากนั้นได้มีการ set value ใหม่ให้กับ b ใน index array ที่ 0[ตำแหน่งที่ 1] เป็นค่า 9
+จะเห็นได้ว่า set value 9 นั้นมีผลกับ a ใน index array เดียวกัน
+
+<br />
+<br />
+<h5> + References</h5>
+เราจะใช้ const สำหรับการทำ refences value แทนการใช้ var. ทำไมจึงแนะนำการใช้ const แทนการใช้ var เพราะ const นั้นจะทำให้ไม่สามารถเข้าถึงเพื่อแก้ไขข้อมูลชุดนี้ได้ในภายหลัง เหมาะแก่การใช้ในการสร้าง variable เพื่อเป็นค่าคงที่
+
+<div class="code">
+    <p>const a = 1;</p>
+    <p>const b = 2;</p>
+    <p>b = 3; <span class="red-text">//Uncaught TypeError: Assignment to constant variable.</span></p>
+</div>
+
+const ไม่สามารถ reassign ค่าได้และถ้าเราต้องการที่จะ reassign ค่าเราควรใช้ let แทนการใช้ var เช่นกันการใช้ let แทน var นั้น มีความแตกต่างตรงที่ let จะทำงานเพียงภายใน layer ของ block ของตัวมันเองลงไป
+<div class="code">
+    <p>let count = 1;</p>
+    <p>if (true) {</p>
+    <div class="tab-left">count += 1;</div>
+    <p>}</p>
+</div>
+
+การที่จะเลือกใช้ let และ const นั้น ทั้งสอง reference type จะต้องอยู่ภายใน { }
+// const and let only exist in the blocks they are defined in.
+<div class="code">
+    <p>...</p>
+    <p>{</p>
+    <div class="tab-left">
+        <p>let a = 1;</p>
+        <p>const b = 2;</p>
+        <p>var c = 3;</p>
+        <p>console.log(a); <span class="text">// 1</span></p>
+        <p>console.log(b); <span class="text">// 2</span></p>
+        <p>console.log(c); <span class="text">// 3</span></p>
+    </div>
+    <p>}</p>
+    <p>console.log(a); <span class="text">// Uncaught ReferenceError: a is not defined</span></p>
+    <p>console.log(b); <span class="text">// Uncaught ReferenceError: a is not defined</span></p>
+    <p>console.log(c); <span class="text">// 3</span></p>
+</div>
+
+<br />
+<h5> + Objects</h5>
+• วิธีการ ประกาศ objects 
+<div class="code">
+    <p>const obj = {};</p>
+</div>
+• หลีกเลี่ยงการใช้ reserved word หรือคำเฉพาะ
+<br />
+credit : <a hred="http://es5.github.io/#x7.6.1">es5 : reserved word</a>
+<div class="code">
+    <div class="row">
+        <div class="columns small-6">
+            <p>const obj = {</p>
+            <div class="tab-left">
+                <p>default: { name: <span class="red-text">'kent'</span> },</p>
+                <p>private: true,</p>
+            </div>
+            <p>};</p>
+        </div>
+        <div class="columns small-6">
+            <p>// use <span class="red-text">'defaults'</span> instead of <span class="red-text">'default'</span></p>
+            <p>const obj = {</p>
+            <div class="tab-left">
+                <p>defaults: { name: <span class="red-text">'kent'</span> },</p>
+                <p>hidden: true,</p>
+            </div>
+            <p>};</p>
+        </div>
+    </div>
+</div>
+Keyword : เหล่านั้นได้แก่<br />
+<div class="tab-left">
+    <div class="code">
+        <div class="row">
+            <div class="columns small-3">break</div>
+            <div class="columns small-3">do</div>
+            <div class="columns small-3">instanceof</div>
+            <div class="columns small-3">typeof</div>
+        </div>
+        <div class="row">
+            <div class="columns small-3">case</div>
+            <div class="columns small-3">else</div>
+            <div class="columns small-3">new</div>
+            <div class="columns small-3">var</div>
+        </div>
+        <div class="row">
+            <div class="columns small-3">catch</div>
+            <div class="columns small-3">finally</div>
+            <div class="columns small-3">return</div>
+            <div class="columns small-3">void</div>
+        </div>
+        <div class="row">
+            <div class="columns small-3">continue</div>
+            <div class="columns small-3">for</div>
+            <div class="columns small-3">switch</div>
+            <div class="columns small-3">while</div>
+        </div>
+        <div class="row">
+            <div class="columns small-3">debugger</div>
+            <div class="columns small-3">functions</div>
+            <div class="columns small-3">this</div>
+            <div class="columns small-3">with</div>
+        </div>
+        <div class="row">
+            <div class="columns small-3">default</div>
+            <div class="columns small-3">if</div>
+            <div class="columns small-3">throw</div>
+            <div class="columns small-3">delete</div>
+        </div>
+        <div class="row">
+            <div class="columns small-3">in</div>
+            <div class="columns small-3 end">try</div>
+        </div>
+    </div>
+</div>
+• ไม่ใช่แค่เพียงการประกาศ objects แต่รวมไปถึง variables และ functions การตั้งชื่อควรสื่อกับคุณสมบัติของ สิ่งนั้นๆให้สอดคล้องกันกับการทำงานเช่น<br />
+<div class="code">
+    <div class="row">
+        <div class="columns small-6">
+            <p class="text">// BAD</p>
+            <p>const objArticle = {</p>
+            <div class="tab-left">
+                <p>asd_asd-asd: <span class="red-text">'Javascript'</span>,</p>
+            </div>
+            <p>};</p>
+        </div>
+        <div class="columns small-6">
+            <p class="text">// GOOD</p>
+            <p>const objArticle = {</p>
+            <div class="tab-left">
+                <p>type: <span class="red-text">'Javascript'</span>,</p>
+            </div>
+            <p>};</p>
+        </div>
+    </div>
+</div>
+• เราควรกำหนด properties ทั้งหมด ณ ตอนประกาศ objects 
+<div class="code">
+    <div class="row">
+        <div class="columns small-6">
+            <p class="text">// BAD</p>
+            <p>const obj = {</p>
+
+            <div class="tab-left">
+                <p>id: 1,</p>
+                <p>name: <span class="red-text">'myname'</span></p>
+            </div>
+            <p>};</p>
+            <p>obj[<span class="red-text">'hidden'</span>] = true;</p>
+            <br />
+        </div>
+        <div class="columns small-6">
+            <p class="text">// GOOD</p>
+            <p>const obj = {</p>
+            <div class="tab-left">
+                <p>id: 1,</p>
+                <p>name: <span class="red-text">'myname'</span>,</p>
+                <p>[<span class="red-text">'hidden'</span>]: true</p>
+            </div>
+            <p>};</p>
+        </div>
+    </div>
+</div>
+• ประกาศ functions ใน objects แบบสั้นๆ
+<div class="code">
+    <div class="row">
+        <div class="columns small-6">
+            <p class="text">// BAD</p>
+            <p>const obj = {</p>
+
+            <div class="tab-left">
+                <p>value: 1,</p>
+                <p>addValue: functions (value) {</p>
+                <div class="tab-left">
+                    <p>return atom.value + value;</p>
+                </div>
+                <p>}</p>
+            </div>
+            <p>};</p>
+        </div>
+        <div class="columns small-6">
+            <p class="text">// GOOD</p>
+            <p>const obj = {</p>
+
+            <div class="tab-left">
+                <p>value: 1,</p>
+                <p>addValue(value) {</p>
+                <div class="tab-left">
+                    <p>return this.value + value;</p>
+                </div>
+                <p>}</p>
+            </div>
+            <p>};</p>
+        </div>
+    </div>
+</div>
+• ประกาศ properties ใน objects แบบสั้นๆ
+<div class="code">
+    <p>const name = <span class="red-text">'myname'</span>;</p>
+    <div class="row">
+        <div class="columns small-6">
+            <p class="text">// BAD</p>
+            <p>const obj = {</p>
+            <div class="tab-left">
+                <p>name: name,</p>
+            </div>
+            <p>};</p>
+        </div>
+        <div class="columns small-6">
+            <p class="text">// GOOD</p>
+            <p>const obj = {</p>
+            <div class="tab-left">
+                <p>name,</p>
+            </div>
+            <p>};</p>
+        </div>
+    </div>
+</div>
+• ใช้ Quote [ <span class="red-text">'</span> ]ช่วยในการ ประกาศ attribute หรือ properties ที่มีชื่อมีรูปแบบที่ไม่ใช่ keyword
+<div class="code">
+    <p>const name = <span class="red-text">'myname'</span>;</p>
+    <div class="row">
+        <div class="columns small-6">
+            <p class="text">// BAD</p>
+            <p>const obj = {</p>
+            <div class="tab-left">
+                <p><span class="red-text">'name'</span>: <span class="red-text">'JS'</span>,</p>
+                <p><span class="red-text">'address'</span>: <span class="red-text">'/src/path'</span>,</p>
+                <p><span class="red-text">'attr-type'</span>: <span class="red-text">'article'</span>,</p>
+            </div>
+            <p>};</p>
+        </div>
+        <div class="columns small-6">
+            <p class="text">// GOOD</p>
+            <p>const obj = {</p>
+            <div class="tab-left">
+                <p>name: <span class="red-text">'JS'</span>,</p>
+                <p>address: <span class="red-text">'/src/path'</span>,</p>
+                <p><span class="red-text">'attr-type'</span>: <span class="red-text">'article'</span>,</p>
+            </div>
+            <p>};</p>
+        </div>
+    </div>
+</div>
+
+<br />
+<h5> + Properties</h5>
+• ใช้ . ในการเข้าถึงค่าของ properties แทนการเข้าถึงด้วยวิธีการ call inde ของ array
+<div class="code">
+    <p>const obj = {</p>
+    <div class="tab-left">
+        <p>hidden: true,</p>
+        <p>name: <span class="red-text">'myname'</span>,</p>
+    </div>
+    <p>};</p>
+    <div class="row">
+        <div class="columns small-6">
+            <p class="text">// BAD</p>
+            <p>const name = obj[<span class="red-text">'name'</span>];</p>
+        </div>
+        <div class="columns small-6">
+            <p class="text">// GOOD</p>
+            <p>const name = obj.name;</p>
+        </div>
+    </div>
+</div>
+<span class="red-text text">*แต่วิธี call index เหมาะกับการ call properties แบบ dynamics name</span>
+
+<br /><br />
+<h5> + Comparison Operators & Equality</h5>
+ประเภทของ Condition 
+<div class="code">
+    Rules condition expression 
+    <div class="row tab-left">
+        <ul class="tab-left">
+            <li><b>Objects</b> evaluate to <b>true</b></li>
+            <li><b>Undefined</b> evaluates to <b>false</b></li>
+            <li><b>Null evaluates</b> to <b>false</b></li>
+            <li><b>Booleans</b> evaluate to the value of the <b>boolean</b></li>
+            <li><b>Numbers</b> evaluate to false if +0, -0, or NaN, otherwise <b>true</b></li>
+            <li><b>Strings</b> evaluate to false if an empty string <span class="red-text">''</span>, otherwise <b>true</b></li>
+        </ul>
+    </div>
+</div>
+
+<br />
+<h5> + Blocks</h5>
+• วิธีใช้งาน Blocks ที่ดี
+<div class="code">
+    <div class="row">
+        <div class="columns small-6">
+            <p class="text">// BAD</p>
+            <p>if (test)</p>
+            <p class="tab-left">return false;</p>
+        </div>
+        <div class="columns small-6">
+            <p class="text">// GOOD</p>
+            <p>if (test) return false;</p>
+            <p class="text">// OR</p>
+            <p>if (test) {</p>
+            <p class="tab-left">return false; </p>
+            <p>}</p>
+        </div>
+    </div>
+    <hr />
+
+    <div class="row">
+        <div class="columns small-6">
+
+            <p>if (arr.length > 0) {</p>
+            <p class="tab-left">.. do somethings</p>
+            <p>}</p>
+        </div>
+        <div class="columns small-6">
+            <p>if (arr.length) {</p>
+            <p class="tab-left">.. do somethings</p>
+            <p>}</p>
+        </div>
+    </div>
+</div>

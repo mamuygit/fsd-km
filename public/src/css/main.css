@@ -1,0 +1,220 @@
+/* Container Style */
+body {
+  max-width: 1440px;
+  min-width: 768px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.header > nav > h2 {
+  font-size: 2.5rem;
+}
+
+.wrapper-container {
+  min-height: 100%;
+  position: relative;
+}
+
+.wrapper-container .wrapper .content {
+  padding-bottom: 3%;
+}
+
+.footer {
+  font-size: 12px;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  padding-right: 10px;
+}
+
+/* Override CSS Control Main*/
+hr {
+  margin: 0;
+  max-width: initial;
+}
+
+/* Control Style*/
+.clearfix {
+  clear: both;
+  float: none;
+}
+
+img {
+  display: none;
+}
+
+img.image50 {
+  width: 50%;
+}
+
+div.binding {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  min-height: 400px;
+}
+
+div.preload {
+  background: url("../../src/img/ring.gif");
+  background-repeat: no-repeat;
+  background-size: 20%;
+  background-position: 50%;
+  height: 250px;
+}
+
+div.preload.loaded {
+  background: none;
+  height: 100%;
+}
+
+div.preload.loaded img {
+  display: block;
+}
+
+.article-menu-list > li {
+  list-style-type: none;
+}
+
+/* linear Style*/
+.line-header {
+  position: relative;
+  height: 25px;
+}
+
+.line-header .name {
+  position: absolute;
+  top: -55%;
+  left: 5%;
+  background: white;
+  padding: 0 10px;
+  margin: 0;
+}
+
+/* Container Style*/
+.margin-center {
+  margin: 0 auto;
+}
+
+.article-section {
+  margin: 3% 0 1%;
+}
+
+.article-content-wrapper,
+.article-list {
+  margin-top: 2%;
+}
+
+ul.tabs {
+  width: 100%;
+}
+
+ul.tabs li {
+  float: left;
+  padding: 1% 2%;
+  border-right: 1px solid #E6E6E6;
+}
+.table_Reuslt > .row {
+  display: table;
+  width: 100%;
+}
+
+.table_Reuslt > .row .columns {
+  border: 1px solid #EFEFEF;
+  display: table-cell;
+  float: none;
+  padding: 1%;
+}
+
+/* carousel style*/
+.carousel {
+  width: 100%;
+  margin: 2% auto;
+  display: table;
+}
+
+.carousel.carousel-collection > div.item-shell {
+  display: table-cell;
+  /*float:none;*/
+  float: left;
+  margin-top: 2%;
+}
+
+.carousel.carousel-collection > div.item-shell:nth-child(-n+3) {
+  margin-top: 0%;
+}
+
+/* https://css-tricks.com/how-nth-child-works/ */
+.carousel.carousel-collection > div.item-shell > .item {
+  /*background-color:silver;
+    border:1px solid #808080;*/
+  background-color: #EFEFEF;
+  border: 1px solid #D6D6D6;
+  cursor: pointer;
+}
+
+.carousel.carousel-collection > div.item-shell > .item > .article-content {
+  padding: 10px 20px 0;
+  min-height: 150px;
+  max-height: 200px;
+}
+
+.carousel.carousel-collection > div.item-shell > .item > .preload.article-img {
+  border-top: 1px solid #A0A0A0;
+}
+
+.carousel.carousel-collection > div.item-shell > .item > .preload.article-img.loaded {
+  border-top: none;
+}
+
+/* Article Style */
+.code {
+  width: 90%;
+  margin: 2% auto;
+  border: 1px solid silver;
+  padding: 5px 10px;
+}
+
+.content.code {
+  width: 98%;
+  border: none;
+  margin: 0% auto;
+}
+
+.code p, .code .row, .code .columns {
+  padding: 0;
+  margin: 0;
+}
+
+.code .tab-left {
+  padding-left: 20px;
+}
+
+.code .text, .text-second {
+  font-style: italic;
+  color: #808080;
+}
+
+.result .code {
+  width: 100%;
+  min-height: 150px;
+  padding-top: 2%;
+}
+
+.red-text {
+  color: #d14;
+}
+
+.green-text {
+  color: #39A540;
+}
+
+.block-color {
+  color: #043dd8;
+}
+
+/* Media Query */
+@media (max-width: 640px) {
+  .header > nav > h2 {
+    font-size: 2rem;
+  }
+}

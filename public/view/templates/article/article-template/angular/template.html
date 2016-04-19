@@ -1,0 +1,49 @@
+﻿<h4>Template</h4>
+Credit : <a href="https://docs.angularjs.org" target="_blank">angular org</a><br /><br />
+ใน angular คำว่า Template นั้นก็คือ file html นั้นเอง เพียงแต่ html file เหล่านั้น จะมี markup ที่จะใช้ใน angular เพิ่มเข้ามา<br /><br />
+<h5>Static Template</h5>
+&emsp;&emsp;โดยปกติเวลาเราจะสร้าง HTML เราจะเขียน เป็น static HTML ขึ้นมา 1 หน้าเพื่อให้ง่ายกับการเริ่มต้นใช้งาน angular ให้สร้าง index.html ขึ้นมา 1 file โดยใส่<br />
+
+code :
+    <div class="code">
+        <<span>div</span>> Hello world !!! <<span>/div</span>>
+    </div>
+<br />
+result :
+<div class="code">
+    <div>Hello World !!!</div>
+</div>
+<br />
+
+<h5>Angular Templates</h5>
+&emsp;&emsp;ทีนี้เรามาดูการวาง html template สำหรับใช้งานกับ angular กันมั่งการเขียน angular นั้นจะเขียนในรูปแบบ pattern ของ MVC โดยในส่วนของ html เราจะถือเป็น view โดย angualr จะมอง view เป็นเสมือน presentation ส่วนแสดงผล
+ดังนั้นเมื่อใดที่มีการเปลี่ยนเเปลงข้อมูลในส่วนของ model angylar จะมีการโหลดข้อมูลที่มีส่วนที่เกี่ยวข้องกับส่วนของ binding และทำการ update view จากไฟล์เดิมที่สร้างใน section ก่อนหน้า [Static Template] ให้เปลี่ยนแปลง code เป็นดังนี้<br />
+
+code :
+<div class="code">
+    <p><<span>html</span>></p>
+    <p><<span>head</span>></p>
+        <p class="tab-left"> <<span>script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"</span>><<span>/script</span>></p>
+    <p><<span>/head</span>></p>
+    <p><<span>body</span>></p>
+        <p class="tab-left"><<span>div</span> <span class="green-text">ng-model</span>=<span class="red-text">"world"</span> <span class="green-text">ng-init</span>=<span class="red-text">"world='World'</span>"> Hello {<span>{</span>world<span>}</span>} !!! <<span>/div</span>></p>
+    <p><<span>/body</span>></p>
+    <p><<span>/html</span>></p>
+</div>
+<br />
+result :
+<div class="code">
+    <div ng-model="world" ng-init="world='World'">Hello {{world}} !!!</div>
+</div>
+จากตัวอย่างข้างต้นนั้นดูเหมือน html ธรรมดากับ markup แบบใหม่โดยตัวอย่างนี้แสดงให้เห้นถึงการทำงานของ angular template แบบ basicly โดยเป็นการสร้าง model ที่มีชื่อว่า world และ set ค่าให้เป็น string 'world' ที่ ng-init จากนั้น ให้สังเกตุใน div ว่าจะมีสัญลักษณ์ {<span>{</span>...<span>}</span>} อันนี้คือ <span class="block-color">block</span> ของ angular สำหรับการเรียกใช้ object ที่เรามีภายใน scope นั้นๆ
+ในที่นี้ภายใน scope มี object model ชื่อ world เราจึงสามารถเรียก {<span>{</span>world<span>}</span>} ได้ <br /><br />
+
+<h5>Two-way Data Binding : Template</h5>
+<div class="preload">
+    <img src="../src/img/ang_Template.png" imageonload class="small-10 margin-center" />
+    <p class="text-center">credit : <a href="https://docs.angularjs.org/tutorial/step_04" target="_blank">https://docs.angularjs.org/tutorial/step_04</a></p>
+</div>
+&emsp;&emsp;สำหรับ Angular รูปแบบการทำ data binding เมื่อ model มีการ update data ฝั่ง view จะมีการ update view แบบอัตโนมัติโดยการทำงานนี้ไมไ่ด้มีส่วนเกี่ยวข้องกับ DOM.
+
+
+
