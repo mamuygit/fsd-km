@@ -55,7 +55,7 @@
 			  },
         {
          "title":"$location",
-         "description":"Pretty URL on Angular JS"
+         "description":"Pretty URL on Angular JS",
          "url":"location"
         },
 			  {
