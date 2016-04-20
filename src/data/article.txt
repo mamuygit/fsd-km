@@ -53,15 +53,15 @@
 				 "description":"",
 				 "url":"state"
 			  },
-			  {
-				 "title":"Condition when binding with ng-*",
-				 "description":"",
-				 "url":"ngAngular"
-			  },
         {
          "title":"$location",
          "description":"Pretty URL on Angular JS"
          "url":"location"
-        }]
+        },
+			  {
+				 "title":"Condition when binding with ng-*",
+				 "description":"",
+				 "url":"ngAngular"
+			  }]
 		   }
 }
