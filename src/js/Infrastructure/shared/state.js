@@ -100,9 +100,9 @@
                 }
             });
             // Set Url HTML5
-            //$locationProvider.html5Mode({
-            //    enabled: true,requireBase: false
-            //});
+            $locationProvider.html5Mode({
+               enabled: true,requireBase: false
+            });
         // Set Url Direction
 
         $urlRouterProvider.otherwise('/home');
