@@ -22,7 +22,7 @@
             })
             .state('master.home',
             {
-                url: 'home',
+                url: '/home',
                 views: {
                     'content': { templateUrl: '../view/templates/home/index.html' },
                     controller: function ($scope) {
